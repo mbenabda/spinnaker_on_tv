@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux'
 
 import './index.css';
-import SpinnakerOnTV from './App';
+import SpinnakerOnTV from './modules';
 import registerServiceWorker from './registerServiceWorker';
 import createStore from './redux/createStore'
 
