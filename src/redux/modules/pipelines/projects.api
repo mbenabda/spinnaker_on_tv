@@ -1,0 +1,34 @@
+//GET / projects
+
+[{
+    "config": {
+        "applications": [
+            "hotelavailabilities",
+            "hotelinventories",
+            "hotelprices",
+            "hotelrates"
+        ],
+        "clusters": [{
+                "account": "test",
+                "applications": null,
+                "detail": "*",
+                "stack": "*"
+            },
+            {
+                "account": "preprod",
+                "applications": null,
+                "detail": "*",
+                "stack": "*"
+            }
+        ],
+        "pipelineConfigs": [
+
+        ]
+    },
+    "createTs": 1507204551971,
+    "email": "dev-magicsauce@weekendesk.fr",
+    "id": "1c1d6cdc-1094-44a2-9dab-13fe6b917079",
+    "lastModifiedBy": "anonymous",
+    "name": "MRP",
+    "updateTs": 1507204553000
+}]
