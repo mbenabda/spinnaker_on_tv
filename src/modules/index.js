@@ -3,10 +3,10 @@ import {
   BrowserRouter as Router,
   Route,
 } from 'react-router-dom'
-import Home from './home'
+import Project from './project'
 
 export default () => (
     <Router>
-        <Route exact path="/" component={Home}/>
+        <Route exact path="/" component={Project}/>
     </Router>
 )
