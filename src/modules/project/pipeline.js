@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React from 'react'
 import PipelineExecution from './pipelineExecution'
 
 export default (props) => (
@@ -22,7 +22,7 @@ const styles = {
   },
 
   header: {
-    backgroundColor: '#F1F1F1',
+    backgroundColor: '#D7E8ED',
     padding: '0 .5rem',
   },
 

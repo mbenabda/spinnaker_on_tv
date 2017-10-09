@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 
 export default (props) => (
     <div>
@@ -12,7 +12,7 @@ const styles = {
             color: '#DEDEDE',
         },
         RUNNING: {
-            color: '#F2B661',
+            color: '#149cb5',
         },
         SUCCEEDED: {
             color: '#A6BF82',
