@@ -77,8 +77,9 @@ const fetchProject = (id) => {
     }
 }
 
-const fetchApplicationPipelines = (application, {limit, statuses}) => {
+const fetchApplicationPipelines = (application, filters) => {
     return async (dispatch) => {
+        const {limit, statuses} = filters || {}
         dispatch(createAction("FETCH_APPLICATION_PIPELINES_REQUEST")({
             application,
             limit,
@@ -87,7 +88,7 @@ const fetchApplicationPipelines = (application, {limit, statuses}) => {
 
 
         try {
-            const response = await fetch(withQuery("http://localhost:8084/applications/" + application, {
+            const response = await fetch(withQuery("http://localhost:8084/applications/" + application + '/pipelines', {
                 limit,
                 statuses: statuses ? statuses.join(',') : undefined
             }))

@@ -10,6 +10,6 @@ export default connect(
     }),
     (dispatch) => ({
         fetchApplication: (id) => dispatch(actions.fetchApplication(id)),
-        fetchApplicationPipelines: (id) => dispatch(actions.fetchApplicationPipelines(id, {statuses: ['RUNNING']})),
+        fetchApplicationPipelines: (id) => dispatch(actions.fetchApplicationPipelines(id)),
     })
 )(Application)

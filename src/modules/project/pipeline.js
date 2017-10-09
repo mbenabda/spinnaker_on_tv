@@ -4,7 +4,7 @@ import PipelineExecution from './pipelineExecution'
 export default (props) => (
     <div style={styles.container}>
         <header style={styles.header}>
-            <h3 style={styles.name}>{props.attributes.accounts}</h3>
+            <h3 style={styles.name}>{props.id}</h3>
         </header>
 
         <section style={styles.executions}>
