@@ -1,26 +1,25 @@
 import React, {Component} from 'react'
-import Application from './application'
-
+import Application from './ApplicationContainer'
 
 class Project extends Component {
-
   componentWillMount() {
-    this.props.fetchProjectApplications(this.props.project.id) 
+    this.props.fetchProject(this.props.id)
   }
-//             <Application {...application} key={application.id} />
 
   render() {
     return (
       <div style={styles.applications}>
-        {this.props.applications.map(application => (
-          <div style={styles.application} key={application.name}>
-          {application.name}
+        {this.props.project && this.props.project.config && this.props.project.config.applications && this.props.project.config.applications.map(application => (
+          <div style={styles.application} key={application}>
+            <Application id={application} key={application} />
           </div>
         ))}
       </div>
     )
   }
 }
+
+export default Project
 
 const styles = {
   applications: {
@@ -32,4 +31,3 @@ const styles = {
   },
 }
 
-export default Project

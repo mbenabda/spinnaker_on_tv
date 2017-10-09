@@ -7,12 +7,12 @@ class ProjectSelector extends Component {
   }
 
   handleChange(event) {
-    this.props.onProjectSelected(this.props.projects.find(project => project.id === event.target.value))
+    this.props.onProjectSelected(event.target.value)
   }
 
   render() {
     return (
-      <select value={this.props.selectedProject && this.props.selectedProject.id} onChange={this.handleChange}>
+      <select value={this.props.selectedProject} onChange={this.handleChange}>
         {
           this.props.projects.map(project => (
             <option key={project.id} value={project.id}>

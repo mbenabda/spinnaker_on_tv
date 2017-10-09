@@ -4,11 +4,12 @@ import PipelineExecution from './pipelineExecution'
 export default (props) => (
     <div style={styles.container}>
         <header style={styles.header}>
-            <h3 style={styles.name}>{props.name}</h3>
+            <h3 style={styles.name}>{props.attributes.accounts}</h3>
         </header>
 
         <section style={styles.executions}>
-            {props.executions.map(execution => <PipelineExecution {...execution} key={execution.id}/>)}
+          {JSON.stringify(props)}
+            {/*  props.executions.map(execution => <PipelineExecution {...execution} key={execution.id}/>) */}
         </section>
     </div>
 )

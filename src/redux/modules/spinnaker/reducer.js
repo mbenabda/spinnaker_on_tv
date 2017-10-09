@@ -1,15 +1,28 @@
 import typeToReducer from 'type-to-reducer'
-//import _ from 'lodash'
+import _ from 'lodash'
 
 const initialState = {
-    projects: [],
+    projectsById: {},
     applicationsByName: {},
+    pipelinesByApplicationName: {
+
+    },
 }
 
 export default typeToReducer({
-    FETCH_PROJECTS_SUCCESS: (state, {payload: projects}) => ({ 
+    FETCH_PROJECTS_SUCCESS: (state, {payload: projects}) => { 
+        return {
+            ...state,
+            projectsById: Object.assign({}, state.projectsById, _.keyBy(projects, p => p.id))
+        }
+    },
+
+    FETCH_PROJECT_SUCCESS: (state, {payload: project}) => ({ 
         ...state,
-        projects
+        projectsById: {
+            ...state.projectsById,
+            [project.id]: project
+        }
     }),
 
     FETCH_APPLICATION_SUCCESS:  (state, {payload: application}) => ({ 
@@ -20,4 +33,20 @@ export default typeToReducer({
         }
     }),
 
+    FETCH_APPLICATIONS_SUCCESS: (state, {payload: apps}) => { 
+        return {
+            ...state,
+            applicationsByName: Object.assign({}, state.applicationsByName, _.keyBy(apps, p => p.name))
+        }
+    },
+
+    FETCH_APPLICATION_PIPELINES_SUCCESS: (state, {payload: {application, pipelines}}) => { 
+        return {
+            ...state,
+            pipelinesByApplicationName: {
+                ...state.pipelinesByApplicationName,
+                [application]: (state.pipelinesByApplicationName[application] || []).concat(pipelines)
+            }
+        }
+    },
 }, initialState)

@@ -5,7 +5,7 @@ import actions from '../../redux/modules/spinnaker/actions'
 
 export default connect(
   (state) => ({
-    projects: state.spinnaker.projects
+    projects: Object.values(state.spinnaker.projectsById)
   }),
   (dispatch) => ({
     fetchProjects: () => dispatch(actions.fetchProjects())

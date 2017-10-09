@@ -11,8 +11,8 @@ class Page extends Component {
     this.selectProject = this.selectProject.bind(this)
   }
 
-  selectProject(project) {
-    this.setState({selectedProject: project}) 
+  selectProject(id) {
+    this.setState({selectedProject: id}) 
   }
 
   componentDidMount() {
@@ -21,20 +21,18 @@ class Page extends Component {
 
   render() {        
     const selectedProject = this.props.projects.length === 1
-        ? this.props.projects[0] 
+        ? this.props.projects[0] .id
         : this.props.selectedProject
     return (
       <div>
-      {
-        <ProjectSelector projects={this.props.projects} 
-                         selectedProject={selectedProject} 
-                         onProjectSelected={this.selectProject}/>
-      }
-      <ul>
         {
-          selectedProject && <Project project={selectedProject}/>
+            <ProjectSelector projects={this.props.projects} 
+                             selectedProject={selectedProject} 
+                             onProjectSelected={this.selectProject}/>
         }
-      </ul>
+        {
+            selectedProject && <Project id={selectedProject}/>
+        }
       </div>
     )
   }
