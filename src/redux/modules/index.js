@@ -1,9 +1,5 @@
-import typeToReducer from 'type-to-reducer'
-import _ from 'lodash'
+import spinnaker from './spinnaker/reducer'
 
-const initialState = {}
 export default {
-    shim: typeToReducer({
-
-    }, initialState)
+    spinnaker
 }

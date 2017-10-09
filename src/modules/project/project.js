@@ -1,15 +1,26 @@
-import React from 'react'
+import React, {Component} from 'react'
 import Application from './application'
 
-export default (props) => (
-  <div style={styles.applications}>
-    {props.applications.map(application => (
-      <div style={styles.application}>
-        <Application {...application} key={application.id} />
+
+class Project extends Component {
+
+  componentWillMount() {
+    this.props.fetchProjectApplications(this.props.project.id) 
+  }
+//             <Application {...application} key={application.id} />
+
+  render() {
+    return (
+      <div style={styles.applications}>
+        {this.props.applications.map(application => (
+          <div style={styles.application} key={application.name}>
+          {application.name}
+          </div>
+        ))}
       </div>
-    ))}
-  </div>
-)
+    )
+  }
+}
 
 const styles = {
   applications: {
@@ -20,3 +31,5 @@ const styles = {
     margin: '0 0 1rem 0',
   },
 }
+
+export default Project
