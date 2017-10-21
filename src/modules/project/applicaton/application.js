@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
-import Pipelines from './PipelineListContainer'
-import ApplicationInstances from './applicationInstances'
+import Pipelines from '../pipelineList/'
 
 class Application extends Component {
   componentWillMount() {

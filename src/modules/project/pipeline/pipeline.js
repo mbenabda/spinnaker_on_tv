@@ -1,5 +1,4 @@
 import React from 'react'
-import PipelineExecution from './pipelineExecution'
 
 export default (props) => (
     <div style={styles.container}>

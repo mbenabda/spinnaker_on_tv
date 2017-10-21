@@ -15,7 +15,7 @@ class Page extends Component {
     this.setState({selectedProject: id}) 
   }
 
-  componentDidMount() {
+  componentWillMount() {
     this.props.fetchProjects()
   }
 
