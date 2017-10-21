@@ -1,5 +1,5 @@
 import { createAction } from 'redux-actions'
-import _ from 'lodash'
+//import _ from 'lodash'
 import withQuery from 'with-query'
 
 const fetchProjects = () => {

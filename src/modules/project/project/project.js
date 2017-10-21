@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import Application from './applicaton/'
+import Application from '../applicaton/'
 
 class Project extends Component {
   componentWillMount() {

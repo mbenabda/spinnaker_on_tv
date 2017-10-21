@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
-import Pipelines from '../pipelineList/'
+import PipelineConfigs from '../pipelineConfigsList'
 
 class Application extends Component {
   componentWillMount() {
     this.props.fetchApplication(this.props.id)
+    this.props.fetchApplicationPipelineConfigs(this.props.id)
   }
 
   render() {
@@ -16,7 +17,7 @@ class Application extends Component {
             {/* <ApplicationInstances instances={props.liveInstances}/> */}
         </header>
 
-        <Pipelines application={this.props.application.name}/>
+        <PipelineConfigs pipelineConfigs={this.props.pipelineConfigs || []}/>
       </div>
     )
   }
