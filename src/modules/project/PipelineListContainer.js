@@ -5,9 +5,9 @@ import actions from '../../redux/modules/spinnaker/actions'
 
 export default connect(
     (state, ownProps) => ({
-        pipelines: state.spinnaker.pipelinesByApplicationName[ownProps.application]
+        pipelines: state.spinnaker.pipelineConfigs[ownProps.application]
     }),
     (dispatch) => ({
-        fetchApplicationPipelines: (id) => dispatch(actions.fetchApplicationPipelines(id)),
+        fetchApplicationPipelineConfigs: (id) => dispatch(actions.fetchApplicationPipelineConfigs(id)),
     })
 )(List)

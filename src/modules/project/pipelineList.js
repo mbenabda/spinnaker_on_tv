@@ -4,7 +4,7 @@ import ApplicationInstances from './applicationInstances'
 
 class List extends Component {
   componentWillMount() {
-    this.props.fetchApplicationPipelines(this.props.application)
+    this.props.fetchApplicationPipelineConfigs(this.props.application)
   }
 
   render() {
@@ -13,7 +13,7 @@ class List extends Component {
       {
         this.props.pipelines && this.props.pipelines.map(pipeline => (
           <div style={styles.pipeline} key={pipeline.id}>
-            <Pipeline {...pipeline} />
+            <Pipeline pipeline={pipeline} />
           </div>
         ))
       }

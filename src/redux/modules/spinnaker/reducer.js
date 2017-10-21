@@ -4,9 +4,8 @@ import _ from 'lodash'
 const initialState = {
     projectsById: {},
     applicationsByName: {},
-    pipelinesByApplicationName: {
-
-    },
+    pipelineConfigs: {},
+    pipelinesByApplicationName:{},
 }
 
 export default typeToReducer({
@@ -49,4 +48,16 @@ export default typeToReducer({
             }
         }
     },
+    FETCH_APPLICATION_PIPELINE_CONFIGS: {
+        REQUEST: (state, action) => ({...state}),
+        SUCCESS: (state, { payload: { application, pipelineConfigs } }) => ({
+            ...state,
+            pipelineConfigs: {
+                ...state.pipelineConfigs,
+                [application]: (state.pipelineConfigs[application] || []).concat(pipelineConfigs)
+            }
+
+        }),
+        FAILURE: (state, action) => ({...state}),
+    }
 }, initialState)

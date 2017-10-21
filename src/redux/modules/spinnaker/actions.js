@@ -103,6 +103,18 @@ const fetchApplicationPipelines = (application, filters) => {
 
     }
 }
+const fetchApplicationPipelineConfigs = (application) => {
+    return async (dispatch) => {
+        dispatch(createAction("FETCH_APPLICATION_PIPELINE_CONFIGS_REQUEST"))
+        try {
+            const response = await fetch("http://localhost:8084/applications/" + application + '/pipelineConfigs')
+            const pipelineConfigs = await response.json()
+            dispatch(createAction("FETCH_APPLICATION_PIPELINE_CONFIGS_SUCCESS")({application, pipelineConfigs}))            
+        } catch(error) {
+            dispatch(createAction("FETCH_APPLICATION_PIPELINE_CONFIGS_FAILURE")({application, error}))
+        }
+    }
+}
 
 export default {
     fetchProjects,
@@ -110,5 +122,6 @@ export default {
     fetchProjectApplications,
     fetchApplications,
     fetchApplication,
-    fetchApplicationPipelines
+    fetchApplicationPipelines,
+    fetchApplicationPipelineConfigs
 }
