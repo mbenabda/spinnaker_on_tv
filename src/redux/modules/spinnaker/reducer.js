@@ -6,7 +6,6 @@ const initialState = {
     applicationsByName: {},
     pipelineConfigs: {},
     pipelineExecutions: {},
-    pipelinesByApplicationName:{},
 }
 
 export default typeToReducer({
@@ -40,15 +39,6 @@ export default typeToReducer({
         }
     },
 
-    FETCH_APPLICATION_PIPELINES_SUCCESS: (state, {payload: {application, pipelines}}) => { 
-        return {
-            ...state,
-            pipelinesByApplicationName: {
-                ...state.pipelinesByApplicationName,
-                [application]: (state.pipelinesByApplicationName[application] || []).concat(pipelines)
-            }
-        }
-    },
     FETCH_APPLICATION_PIPELINE_CONFIGS: {
         REQUEST: (state, action) => ({...state}),
         SUCCESS: (state, { payload: { application, pipelineConfigs } }) => ({

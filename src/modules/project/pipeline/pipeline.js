@@ -18,7 +18,7 @@ class Pipeline extends Component {
       },
       2000
     )
-    
+
     this.setState({ intervalId })
   }
 
@@ -36,7 +36,7 @@ class Pipeline extends Component {
           <section style={styles.executions}>
               {
                 this.props.executions.map(execution => (
-                  <PipelineExecution execution={execution} key={execution.id}/>
+                  <PipelineExecution pipeline={this.props.pipeline} execution={execution} key={execution.id}/>
                 ))
               }
           </section>

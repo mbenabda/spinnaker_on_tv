@@ -77,33 +77,6 @@ const fetchProject = (id) => {
     }
 }
 
-const fetchApplicationPipelines = (application, filters) => {
-    return async (dispatch) => {
-        const {limit, statuses} = filters || {}
-        dispatch(createAction("FETCH_APPLICATION_PIPELINES_REQUEST")({
-            application,
-            limit,
-            statuses
-        }))
-
-
-        try {
-            const response = await fetch(withQuery("http://localhost:8084/applications/" + application + '/pipelines', {
-                limit,
-                statuses: statuses ? statuses.join(',') : undefined
-            }))
-            const pipelines = await response.json()
-            dispatch(createAction("FETCH_APPLICATION_PIPELINES_SUCCESS")({
-                application,
-                pipelines
-            }))
-        } catch(error) {
-            dispatch(createAction("FETCH_APPLICATION_PIPELINES_FAILURE")(error))
-        }
-
-    }
-}
-
 const fetchApplicationPipelineConfigs = (application) => {
     return async (dispatch) => {
         dispatch(createAction("FETCH_APPLICATION_PIPELINE_CONFIGS_REQUEST"))
@@ -140,7 +113,6 @@ export default {
     fetchProjectApplications,
     fetchApplications,
     fetchApplication,
-    fetchApplicationPipelines,
     fetchApplicationPipelineConfigs,
     fetchPipelineExecutions
 }
