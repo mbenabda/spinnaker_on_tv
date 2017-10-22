@@ -5,6 +5,7 @@ const initialState = {
     projectsById: {},
     applicationsByName: {},
     pipelineConfigs: {},
+    pipelineExecutions: {},
     pipelinesByApplicationName:{},
 }
 
@@ -54,10 +55,24 @@ export default typeToReducer({
             ...state,
             pipelineConfigs: {
                 ...state.pipelineConfigs,
-                [application]: (state.pipelineConfigs[application] || []).concat(pipelineConfigs)
+                [application]: pipelineConfigs
             }
 
         }),
         FAILURE: (state, action) => ({...state}),
-    }
+    },
+
+    FETCH_PIPELINE_EXECUTIONS: {
+        REQUEST: (state, action) => ({...state}),
+        SUCCESS: (state, { payload: { pipelineConfigId, executions } }) => ({
+            ...state,
+            pipelineExecutions: {
+                ...state.pipelineExecutions,
+                [pipelineConfigId]: executions
+            }
+
+        }),
+        FAILURE: (state, action) => ({...state}),
+    },
+    
 }, initialState)

@@ -6,9 +6,9 @@ import PipelineStatus from './pipelineStatus'
 export default (props) => (
   <div style={styles.container}>
     <div style={styles.stages}>
-      {props.stages.map(stage => <StageExecution {...stage} stages={props.stages} key={stage.id}/>)}
+      {props.execution.stages.map(stage => <StageExecution {...stage} stages={props.execution.stages} key={stage.id}/>)}
     </div>
-    <PipelineStatus status={props.status}/>
+    <PipelineStatus status={props.execution.status}/>
   </div>
 )
 

@@ -1,20 +1,31 @@
-import React from 'react'
+import React, { Component } from 'react'
+import PipelineExecution from '../pipelineExecution'
 
-export default (props) => (
-    <div style={styles.container}>
-        <header style={styles.header}>
-            <h3 style={styles.name}>{props.pipeline.name}</h3>
-        </header>
+class Pipeline extends Component {
+  componentWillMount() {
+    this.props.fetchPipelineExecutions(this.props.pipeline.id)
+  }
 
-        <section style={styles.executions}>
-          <pre>
-            {JSON.stringify(props, null, 2)}
-          </pre>
-            {/*  props.executions.map(execution => <PipelineExecution {...execution} key={execution.id}/>) */}
-        </section>
-    </div>
-)
+  render() {
+    return (
+      <div style={styles.container}>
+          <header style={styles.header}>
+              <h3 style={styles.name}>{this.props.pipeline.name}</h3>
+          </header>
 
+          <section style={styles.executions}>
+              {
+                this.props.executions.map(execution => (
+                  <PipelineExecution execution={execution} key={execution.id}/>
+                ))
+              }
+          </section>
+      </div>
+    )
+  }
+}
+
+export default Pipeline
 
 const styles = {
   container: {
@@ -37,3 +48,4 @@ const styles = {
     padding: '.5rem',
   },
 }
+
