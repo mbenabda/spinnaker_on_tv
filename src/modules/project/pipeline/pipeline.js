@@ -2,8 +2,28 @@ import React, { Component } from 'react'
 import PipelineExecution from '../pipelineExecution'
 
 class Pipeline extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      intervalId: undefined
+    }
+  }
+
   componentWillMount() {
     this.props.fetchPipelineExecutions(this.props.pipeline.id)
+
+    const intervalId = setInterval(
+      () => {
+        this.props.fetchPipelineExecutions(this.props.pipeline.id)
+      },
+      2000
+    )
+    
+    this.setState({ intervalId })
+  }
+
+  componentWillUnount() {
+    clearInterval(this.state.intervalId)
   }
 
   render() {
