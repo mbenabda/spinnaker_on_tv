@@ -9,17 +9,12 @@ class Project extends Component {
 
   render() {
     const applications = (this.props.project && this.props.project.config && this.props.project.config.applications) || []
-    const third = Math.floor(applications.length / 3)
-    const columns = [
-      applications.slice(2*third),
-      applications.slice(third, 2*third),
-      applications.slice(0, third),
-    ]
+    const chunks = _.chunk(applications, 4)
   
     return (
       <div style={styles.applications}>
-        {columns.map(applications => (
-          <div style={styles.column}>
+        {chunks.map(applications => (
+          <div style={styles.chunk}>
             {applications.map(application => (
               <div style={styles.application} key={application}>
                 <Application id={application} key={application} />
@@ -37,18 +32,18 @@ export default Project
 const styles = {
   applications: {
     display: 'flex',
-    flexDirection: 'row',
+    flexDirection: 'column',
     justifyContent: 'space-around',
   },
     
   application: {
     margin: '0 0 1rem 0',
+    width: '24%'
   },
 
-  column: {
+  chunk: {
     display: 'flex',
-    flexDirection: 'column',
-    width: '32%'
+    flexDirection: 'row',
   },
 }
 

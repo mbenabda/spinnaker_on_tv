@@ -41,6 +41,7 @@ const styles = {
   },
 
   name: {
+    textTransform: 'uppercase',
     fontSize: '1rem',
     fontWeight: 'normal',
     padding: '.5rem'

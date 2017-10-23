@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import PipelineExecution from '../pipelineExecution'
+import PipelineExecution from './pipelineExecution'
 
 class Pipeline extends Component {
   constructor(props) {
@@ -29,17 +29,11 @@ class Pipeline extends Component {
   render() {
     return (
       <div style={styles.container}>
-          <header style={styles.header}>
-              <h3 style={styles.name}>{this.props.pipeline.name}</h3>
-          </header>
-
-          <section style={styles.executions}>
-              {
-                this.props.executions.map(execution => (
-                  <PipelineExecution pipeline={this.props.pipeline} execution={execution} key={execution.id}/>
-                ))
-              }
-          </section>
+        {
+          this.props.executions.map(execution => (
+            <PipelineExecution pipeline={this.props.pipeline} execution={execution} key={execution.id}/>
+          ))
+        }
       </div>
     )
   }
