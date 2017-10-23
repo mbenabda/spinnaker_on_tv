@@ -36,7 +36,6 @@ const styles = {
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between',
-
     backgroundColor: '#3A5469',
     color: 'white',
   },
@@ -44,5 +43,6 @@ const styles = {
   name: {
     fontSize: '1rem',
     fontWeight: 'normal',
+    padding: '.5rem'
   },
 }
