@@ -16,7 +16,7 @@ class Pipeline extends Component {
       () => {
         this.props.fetchPipelineExecutions(this.props.pipeline.id)
       },
-      2000
+      10000
     )
 
     this.setState({ intervalId })
